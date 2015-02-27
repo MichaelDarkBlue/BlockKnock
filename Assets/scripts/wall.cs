@@ -5,6 +5,7 @@ public class wall : MonoBehaviour {
 
 	public Transform prefabCube1;
 	private float[] numList = {.2f,.4f,.6f,.8f};
+    public GUIText gui; 
 	// Use this for initialization
 	void Start () {
 		//int counter = 1;
@@ -16,13 +17,13 @@ public class wall : MonoBehaviour {
 			for (int x = 0; x < am; x++) {
 				for (int z = 0; z < am; z++) {
 					//GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-					//cube.AddComponent<Rigidbody>();
-					//cube.transform.position = new Vector3(x+xo, y+yo, z+zo);  
+					//cube.AddComponent<Rigidbody>();   
+					//cube.transform.position = new Vector3(x+xo, y+yo, z+zo);   
 					//cube.tag = "cube1";
-					Instantiate(prefabCube1, new Vector3(x+xo, y+yo, z+zo),Quaternion.identity);
+                    GameObject c = (GameObject)Instantiate(prefabCube1, new Vector3(x + xo, y + yo, z + zo), Quaternion.identity);
 					//prefabCube1.tag = "cube" + counter.ToString(); 
 					//counter++;
-					prefabCube1.renderer.material.color = randomColor();
+					c.renderer.material.color = randomColor();
 					//Debug.Log("x: " + (x+xo)); 
 				}
 			}
@@ -39,11 +40,12 @@ public class wall : MonoBehaviour {
 
 		//int x = Random.Range (0, 3);
 		int min = 0; int max = 3 + 1;
-		GUIText gui; gui.text += Random.Range (min, max).ToString;
+        int x = Random.Range(min, max), y = Random.Range(min, max), z = Random.Range(min, max);
+        gui.text += x.ToString() + y.ToString() + z.ToString() + ",";
 		return new Color(
-			numList[Random.Range (min, max)],
-			numList[Random.Range (min, max)],
-			numList[Random.Range (min, max)]
+			numList[x],
+			numList[y],
+			numList[z]
 		                 );
 
 	}
