@@ -4,7 +4,7 @@ using System.Collections;
 public class wall : MonoBehaviour {
 
 	public Transform prefabCube1;
-	private float[] numList = {.2f,.4f,.6f,.8f};
+	private float[] numList = {.2F,.4F,.6F,.8F};
 	// Use this for initialization
 	void Start () {
 		//int counter = 1;
@@ -39,7 +39,7 @@ public class wall : MonoBehaviour {
 
 		//int x = Random.Range (0, 3);
 		int min = 0; int max = 3 + 1;
-		GUIText gui; gui.text += Random.Range (min, max).ToString;
+		//GUIText gui; gui.text += Random.Range (min, max).ToString;
 		return new Color(
 			numList[Random.Range (min, max)],
 			numList[Random.Range (min, max)],
