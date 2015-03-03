@@ -19,12 +19,13 @@ public class wall : MonoBehaviour {
 					//cube.AddComponent<Rigidbody>(); 
 					//cube.transform.position = new Vector3(x+xo, y+yo, z+zo);    
 					//cube.tag = "cube1";
-                    GameObject c;
-                    c = Instantiate(prefabCube1, new Vector3(x+xo, y+yo, z+zo),Quaternion.identity) as GameObject;
+                    //GameObject c;
+                    //c = 
+                    Instantiate(prefabCube1, new Vector3(x+xo, y+yo, z+zo),Quaternion.identity);// as GameObject;
 					//prefabCube1.tag = "cube" + counter.ToString(); 
 					//counter++;
-                    c.tag = "cube1";
-					c.renderer.material.color = randomColor();
+                    //c.tag = "cube1";
+					//c.renderer.material.color = randomColor();
 					//Debug.Log("x: " + (x+xo)); 
 				}
 			}
