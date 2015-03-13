@@ -19,10 +19,10 @@ public class playercontrol : MonoBehaviour {
 		Vector3 syncVelocity = Vector3.zero;
 		if (stream.isWriting)
 		{
-			syncPosition = rigidbody.position;
+			syncPosition = GetComponent<Rigidbody>().position;
 			stream.Serialize(ref syncPosition);
 			
-			syncPosition = rigidbody.velocity;
+			syncPosition = GetComponent<Rigidbody>().velocity;
 			stream.Serialize(ref syncVelocity);
 		}
 		else
@@ -35,7 +35,7 @@ public class playercontrol : MonoBehaviour {
 			lastSynchronizationTime = Time.time;
 			
 			syncEndPosition = syncPosition + syncVelocity * syncDelay;
-			syncStartPosition = rigidbody.position;
+			syncStartPosition = GetComponent<Rigidbody>().position;
 		}
 	}
 
@@ -45,12 +45,12 @@ public class playercontrol : MonoBehaviour {
 		//Rigidbody r = GetComponent<Rigidbody>();
 		//r.mass = 10f;
 		//transform.position = Vector3.zero;  
-		if (networkView.isMine) {
+		if (GetComponent<NetworkView>().isMine) {
 			color = getColor (1);
 		} else {
 			color = getColor (1);
 		}
-		renderer.material.color = color;
+		GetComponent<Renderer>().material.color = color;
 	}
 
 	public Color getColor(int players){
@@ -84,7 +84,7 @@ public class playercontrol : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (networkView.isMine) {
+		if (GetComponent<NetworkView>().isMine) {
 			float horz = Input.GetAxis ("Horizontal") * speed * Time.deltaTime; 	//Input
 			float vert = Input.GetAxis ("Vertical") * speed * Time.deltaTime;
 			transform.Translate (horz, 0, vert);
@@ -98,14 +98,14 @@ public class playercontrol : MonoBehaviour {
 	{
 		syncTime += Time.deltaTime;
 		
-		rigidbody.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
+		GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
 	}
 
 	void OnCollisionEnter(Collision other)
 	{
 		if(other.gameObject.tag == "cube1")
 		{
-			other.gameObject.renderer.material.color = color;
+			other.gameObject.GetComponent<Renderer>().material.color = color;
 		}
 	}
 }

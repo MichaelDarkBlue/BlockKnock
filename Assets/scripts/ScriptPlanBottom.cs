@@ -22,7 +22,7 @@ public class ScriptPlanBottom : MonoBehaviour {
 		Debug.Log (other.gameObject.tag);
 		if(other.gameObject.tag == "cube1")
 		{
-			if (other.gameObject.renderer.material.color == p.color) {
+			if (other.gameObject.GetComponent<Renderer>().material.color == p.color) {
 				p.score += 1;
 				//Debug.Log(p.score);
 				gui.text = "Player 1: " + p.score;

@@ -8,10 +8,10 @@ public class BackgroundCubes : MonoBehaviour
 		//Random Color 
 		//renderer.material.color = new Color(0, 255, 0);
 		Vector3 color = new Vector3(Random.Range(0.0F, 0.5F), Random.Range(0.0F, 0.5F), Random.Range(0.0F, 0.5F));
-		renderer.material.color = new Color(color.x, color.y, color.z);
+		GetComponent<Renderer>().material.color = new Color(color.x, color.y, color.z);
 		//Random Size
 		transform.localScale += new Vector3(Random.Range(1.0F, 3.0F), Random.Range(1.0F, 3.0F), Random.Range(1.0F, 3.0F));
 		//Random Rotation
-		rigidbody.angularVelocity = Random.insideUnitSphere;
+		GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere;
 	}
 }

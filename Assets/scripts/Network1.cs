@@ -10,6 +10,7 @@ public class Network1 : MonoBehaviour
 	private HostData[] hostList;
 	
 	public GameObject playerPrefab;
+    //public wall w;
 	
 	void OnGUI()
 	{
@@ -41,7 +42,10 @@ public class Network1 : MonoBehaviour
 	void OnServerInitialized()
 	{
 		SpawnPlayer();
-	}
+        GameObject get = GameObject.Find("Wall1");
+        wall w = (wall) get.GetComponent(typeof (wall));
+        w.makeBlocks();
+    }
 	
 	
 	void Update()
